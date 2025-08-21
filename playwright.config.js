@@ -34,7 +34,6 @@ export default defineConfig({
     
     trace: 'on-first-retry',
     channel: 'chrome',
-    
   },
   
 
