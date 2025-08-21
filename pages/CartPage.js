@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+
+
+=======
 import { BasePage } from './BasePage.js';
  
 export class CartPage extends BasePage {
@@ -216,3 +220,4 @@ export class CartPage extends BasePage {
     }
 }
  
+>>>>>>> e0f00441d1a878113bd6cdf9439e91d077366b26
