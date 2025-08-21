@@ -1,94 +1,92 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage.js';
-import { ProductPage } from '../pages/ProductPage.js';
+//import { ProductPage } from '../pages/ProductPage.js';
 import { CartPage } from '../pages/CartPage.js';
- 
-test.describe('Shopping Cart Test Suite - TC01-TC05', () => {
+
+test.describe('Shopping Cart Test Suite - TC01-TC10', () => {
     let loginPage;
-    let productPage;
+    //let productPage;
     let cartPage;
- 
+
     test.beforeEach(async ({ page }) => {
         loginPage = new LoginPage(page);
-        productPage = new ProductPage(page);
+        //productPage = new ProductPage(page);
         cartPage = new CartPage(page);
- 
-        // Login before each test
-        await loginPage.navigateToLogin();
-        const loginResult = await loginPage.loginWithValidCredentials();
-        expect(loginResult).toBeTruthy();
-       
-        await loginPage.waitForDashboard();
-        await productPage.navigateToProducts();
-    });
- 
+
+        await loginPage.navigate();
+        await loginPage.login('yallamilli@gmail.com', 'Satya@007');
+        await page.waitForURL('https://rahulshettyacademy.com/client/#/dashboard/dash');
+
+    })
+
+    test.afterEach(async ({ page }) => {
+        cartPage = new CartPage(page);
+        await cartPage.clickOnSignOutButton();
+
+    })
     test('TC01: Add single product to cart functionality', async ({ page }) => {
+        await cartPage.addFirstItemToCart();
+        await expect(cartPage.cartCount).toHaveCount(1)
         
-        const initialCartCount = parseInt(await productPage.getCartItemCount());
-        console.log(`Initial cart count: ${initialCartCount}`);
-       
-        const productAdded = await productPage.addProductToCart('ZARA COAT 3');
-        expect(productAdded).toBeTruthy();
-       
-        await page.waitForTimeout(3000);
-        const finalCartCount = parseInt(await productPage.getCartItemCount());
-       
-        expect(finalCartCount).toBeGreaterThan(initialCartCount);
     });
- 
+
     test('TC02: Add multiple products to cart workflow', async ({ page }) => {
+        await cartPage.addFirstItemToCart();
+        await cartPage.addMultipleItems();
+        await expect(cartPage.cartCount).toHaveText('2');
         
-        const productNames = ['ZARA COAT 3', 'ADIDAS ORIGINAL'];
-        let addedCount = 0;
-       
-        for (let productName of productNames) {
-            const added = await productPage.addProductToCart(productName);
-            if (added) {
-                addedCount++;
-                await page.waitForTimeout(2000);
-            }
-        }
-        expect(addedCount).toBe(2);
     });
- 
-    test('TC03: Add same product multiple times handling', async ({ page }) => {
-        
-        const initialCartCount = parseInt(await productPage.getCartItemCount());
-       
-        for (let i = 0; i < 3; i++) {
-            await productPage.addProductToCart('ZARA COAT 3');
-            //await page.waitForTimeout(5000);
-        }
-        const finalCartCount = parseInt(await productPage.getCartItemCount());
-        expect(finalCartCount).toBeGreaterThan(initialCartCount);
-    });
- 
-    test('TC04: View cart contents and item details', async ({ page }) => {
-        
-        await productPage.addProductToCart('ZARA COAT 3');
-        await page.waitForTimeout(2000);
-       
-        await productPage.clickCartIcon();
-       
-        const cartItems = await cartPage.getCartItems();
-        expect(cartItems.length).toBeGreaterThan(0);
-       
-        const hasZaraProduct = cartItems.some(item =>
-            item.title.toLowerCase().includes('zara')
-        );
-        expect(hasZaraProduct).toBeTruthy();
-    });
- 
-    test('TC05: Cart persistence across page refresh', async ({ page }) => {
-        
-        await productPage.addProductToCart('ZARA COAT 3');
-        const countBeforeRefresh = await productPage.getCartItemCount();
-       
+
+    test('TC03: Cart persistence after page refresh', async ({ page }) => {
+        await cartPage.addFirstItemToCart();
         await page.reload();
-        await page.waitForTimeout(3000);
-       
-        const countAfterRefresh = await productPage.getCartItemCount();
-        expect(parseInt(countAfterRefresh)).toBeGreaterThanOrEqual(0);
-    });
-});
- 
+        await expect(cartPage.cartCount).toHaveCount(1);
+
+    })
+
+    test('TC04: Validation of cart page based on URL', async ({ page }) => {
+        await cartPage.clickOnCartButton();
+        await expect(page).toHaveURL(/.*dashboard\/cart.*/);
+    })
+
+    test('TC05: Verify the continue shopping button', async ({ page }) => {
+        await cartPage.clickOnCartButton();
+        await expect(cartPage.continueShoppingButton).toHaveText("Continue Shopping");
+    })
+
+    test('TC06: Validate the cart product', async ({ page }) => {
+        await cartPage.addFirstItemToCart();
+        await cartPage.clickOnCartButton();
+        await expect(cartPage.buyNowButton).toHaveText("Buy Now");  
+
+    })
+
+    test('TC07: Validate the checkout page', async ({ page }) => {
+        await cartPage.addMultipleItems();
+        await cartPage.clickOnCartButton();
+        await cartPage.clickOnCheckOutButton();
+        await expect(cartPage.paymentMethodText).toContainText("Payment Method");
+          
+    })
+
+    test('TC08: Visibility of delete button', async ({ page }) => {
+        await cartPage.addFirstItemToCart();
+        await cartPage.clickOnCartButton();
+        await expect(cartPage.cartItems.first()).toBeVisible();
+    })
+
+    test('TC09: validate delete item', async ({ page }) => {
+        await cartPage.addFirstItemToCart();
+        await cartPage.clickOnCartButton();
+        await cartPage.clickOnDeleteButton();
+        await expect(cartPage.noProductsText).toHaveText('No Products in Your Cart !');
+    })
+
+    test('TC10: Validate home page after clicking continue shopping', async ({ page }) => {
+        await cartPage.addFirstItemToCart();
+        await cartPage.clickOnCartButton();
+        await cartPage.clickOnContinueButton();
+        await expect(page).toHaveURL(/.*dashboard\/dash.*/);
+    })
+
+})

@@ -1,4 +1,5 @@
 export class CartPage {
+
     constructor(page) {
         this.page = page;
         this.firstItemCartButton = page.locator('//button[@class="btn w-10 rounded"]').first();
@@ -12,33 +13,33 @@ export class CartPage {
         this.checkOutButton = page.getByRole('button', { name: 'Checkout' });
         this.paymentMethodText = page.locator("//div[text()=' Payment Method ']");
         this.deleteButton = page.locator("button.btn.btn-danger");
-        this.noProductsText = page.locator("//h1[text()='No Products in Your Cart !']");
+        this.noProductsText = page.locator("//h1[@style='color: lightgray;']");
         this.cartItems = page.locator("div.cartSection");
- 
+
     }
     async addFirstItemToCart() {
         await this.firstItemCartButton.click();
     }
- 
+
     async addMultipleItems() {
         await this.secondItemCartButton.click();
     }
- 
+
     async clickOnCartButton() {
         await this.cartButton.click();
     }
     async clickOnSignOutButton() {
         await this.signOutButton.click();
     }
- 
+
     async clickOnCheckOutButton() {
         await this.checkOutButton.click()
     }
- 
+
     async clickOnDeleteButton() {
         await this.deleteButton.click()
     }
- 
+
     async clickOnContinueButton() {
        await this.continueShoppingButton.click()
     }

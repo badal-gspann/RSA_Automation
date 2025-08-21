@@ -2,7 +2,9 @@
   "name": "rsa_playwright_test",
   "version": "1.0.0",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "rimraf test-results && playwright test"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
