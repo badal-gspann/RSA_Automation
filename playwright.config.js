@@ -39,10 +39,6 @@ export default defineConfig({
 
     actionTimeout: 70000,
     navigationTimeout: 20000,
-
-    launchOptions: {
-      slowMo: 2000,
-    },
   },
 
   /* Configure projects for major browsers */
