@@ -1,4 +1,5 @@
 export class CartPage {
+
     constructor(page) {
         this.page = page;
         this.firstItemCartButton = page.locator('//button[@class="btn w-10 rounded"]').first();
