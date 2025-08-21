@@ -34,9 +34,13 @@ export default defineConfig({
     
     trace: 'on-first-retry',
     channel: 'chrome',
+<<<<<<< HEAD
     launchOptions:{
       slowMo:2000
     }
+=======
+    slowMo: 5000,
+>>>>>>> e0f00441d1a878113bd6cdf9439e91d077366b26
   },
   
 

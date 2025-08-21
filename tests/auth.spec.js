@@ -1,5 +1,5 @@
-import {test,expect} from "@playwright/test"
-import { LoginPage } from "../pages/LoginPage";
+const { test, expect } = require('@playwright/test');
+const { LoginPage } = require('../pages/LoginPage');
 
 test.describe('Login Functionality - POM', () => {
   let loginPage;
@@ -57,3 +57,4 @@ test.describe('Login Functionality - POM', () => {
   })
 
 });
+

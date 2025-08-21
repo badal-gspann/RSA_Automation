@@ -1,5 +1,3 @@
-// pages/ProductPage.js
-
 export class ProductPage {
   constructor(page) {
     this.page = page;
@@ -124,3 +122,4 @@ async navigateToOrders() {
     return names.includes(productName);
   }
 }
+
