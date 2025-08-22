@@ -22,6 +22,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 2 : 1,
   /* Opt out of parallel tests on CI. */
+
   workers: process.env.CI ? 2 : 2,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: "allure-playwright",
@@ -34,7 +35,7 @@ export default defineConfig({
     trace: 'on-first-retry',
 
     // Browser channel (choose one, comment out the other if needed)
-    channel: 'msedge',
+    // channel: 'msedge',
     // channel: 'chrome',
 
     actionTimeout: 70000,
@@ -45,7 +46,7 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
+      use: { ...devices['Desktop Chrome'],channel:'chrome' },
     },
     {
       name: 'firefox',
