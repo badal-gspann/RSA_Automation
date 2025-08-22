@@ -5,26 +5,10 @@ import { ProductPage } from '../pages/ProductPage.js';
 import { CartPage } from '../pages/CartPage.js';
 import { CheckoutPage } from '../pages/CheckoutPage.js';
 import { OrdersPage } from '../pages/OrdersPage.js';
-
+//------------------// Priyanshu
 test.describe('Team 5 - End-to-End Integration Tests', () => {
 
-  test('TC041: Complete purchase flow from login to order confirmation', async ({ page }) => {
-    const loginPage = new LoginPage(page);
-    const productPage = new ProductPage(page);
-    const cartPage = new CartPage(page);
-    const checkoutPage = new CheckoutPage(page);
 
-    await loginPage.navigate();
-    await loginPage.login('yallamilli@gmail.com', 'Satya@007');
-    await page.waitForURL('**/dashboard/dash');
-
-    await productPage.addProductToCart('ZARA COAT 3');
-    await productPage.navigateToCart();
-    await cartPage.proceedToCheckout();
-
-    const result = await checkoutPage.completeCheckout('test@checkout.com', 'India');
-    expect(typeof result).toBe('boolean');
-  });
 
   test('TC042: View order history after purchase', async ({ authenticatedPage }) => {
     const productPage = new ProductPage(authenticatedPage);

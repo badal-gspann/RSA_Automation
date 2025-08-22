@@ -2,8 +2,8 @@ import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
 import { CheckoutPage } from '../pages/CheckoutPage';
 import { CartPage } from '../pages/CartPage';
-
-test.describe('Cart Page', () => {
+//------------------// Abhinav
+test.describe('Checkout Page', () => {
     let loginPage;
     let cartPage;
 
