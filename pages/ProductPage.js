@@ -4,16 +4,12 @@ export class ProductPage {
     this.cards = page.locator('.card-body');
     this.cartIcon = page.locator('button[routerlink*="cart"]');
     this.toastMessage = page.locator('#toast-container');
-    this.searchInput = page.getByRole('textbox', { name: 'search' })
+    this.searchInput = page.getByRole('textbox', { name: 'search' });
     this.filterSelect = page.locator("//div[@class='py-2 border-bottom ml-3 p-4']//label[text()='fashion']/preceding-sibling::input[@type='checkbox']");
     this.ordersLink = page.locator('[routerlink="/dashboard/myorders"]');
     this.signOutButton = page.locator('text=Sign Out');
-    this.cartIcon = page.locator('button[routerlink*="cart"]');
-    //this.showingfilterReport=page.locator("//div[contains(text(),'Showing 2 results ')]")
-    
   }
 
-  
   async navigate() {
     await this.page.goto('https://rahulshettyacademy.com/client/#/dashboard/dash');
     await this.page.waitForLoadState('networkidle');
@@ -35,7 +31,7 @@ export class ProductPage {
       const card = this.cards.nth(i);
       const title = (await card.locator('b').textContent()).trim();
       if (title === productName) {
-        await card.locator('button:text("Add To Cart")').click();
+        await card.locator('button:has-text("Add To Cart")').click();
         await this.page.waitForSelector('#toast-container', { timeout: 10000 });
         return;
       }
@@ -44,32 +40,26 @@ export class ProductPage {
   }
 
   async searchProduct(productName) {
-    await this.searchInput.fill("ZARA COAT 3");
+    await this.searchInput.fill(productName);
     await this.page.keyboard.press('Enter');
     await this.page.waitForTimeout(3000);
   }
 
   async filterProducts() {
-  const checkbox = this.page.locator('#sidebar div').filter({ hasText: /^fashion$/ }).getByRole('checkbox');
-  await checkbox.check();
-  await this.page.waitForTimeout(2000);
-}
+    const checkbox = this.page.locator('#sidebar div').filter({ hasText: /^fashion$/ }).getByRole('checkbox');
+    await checkbox.check();
+    await this.page.waitForTimeout(2000);
+  }
 
-async navigateToCart() {
-  await Promise.all([
-    this.page.waitForURL('**/dashboard/cart', { timeout: 20000 }),
-    this.cartIcon.click()
-  ]);
-}
+  async navigateToCart() {
+    await this.cartIcon.click();
+    await this.page.waitForURL('**/dashboard/cart', { timeout: 20000 });
+  }
 
-
-async navigateToOrders() {
-  await Promise.all([
-    this.page.waitForURL('**/dashboard/myorders', { timeout: 20000 }),
-    this.ordersLink.click()
-  ]);
-}
-
+  async navigateToOrders() {
+    await this.ordersLink.click();
+    await this.page.waitForURL('**/dashboard/myorders', { timeout: 20000 });
+  }
 
   async getCartItemCount() {
     const badge = this.page.locator('.cart-badge');
@@ -80,17 +70,13 @@ async navigateToOrders() {
   }
 
   async goToCart() {
-    await Promise.all([
-      this.page.waitForURL('**/dashboard/cart', { timeout: 20000 }),
-      this.cartIcon.click()
-    ]);
+    await this.cartIcon.click();
+    await this.page.waitForURL('**/dashboard/cart', { timeout: 20000 });
   }
 
   async goToOrders() {
-    await Promise.all([
-      this.page.waitForURL('**/dashboard/myorders', { timeout: 20000 }),
-      this.ordersLink.click()
-    ]);
+    await this.ordersLink.click();
+    await this.page.waitForURL('**/dashboard/myorders', { timeout: 20000 });
   }
 
   async viewProduct(productName) {
@@ -99,7 +85,7 @@ async navigateToOrders() {
       const card = this.cards.nth(i);
       const title = (await card.locator('b').textContent()).trim();
       if (title === productName) {
-        await card.locator('button:text("View")').click();
+        await card.locator('button:has-text("View")').click();
         await this.page.waitForLoadState('networkidle');
         return;
       }
@@ -122,4 +108,3 @@ async navigateToOrders() {
     return names.includes(productName);
   }
 }
-
