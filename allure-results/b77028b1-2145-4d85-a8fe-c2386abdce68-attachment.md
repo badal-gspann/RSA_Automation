@@ -1,0 +1,55 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e5]:
+    - generic [ref=e7]:
+      - link "Automation Automation Practice":
+        - /url: ""
+        - generic [ref=e8] [cursor=pointer]:
+          - heading "Automation" [level=3] [ref=e9] [cursor=pointer]
+          - paragraph [ref=e10] [cursor=pointer]: Automation Practice
+    - text: 
+    - list [ref=e11]:
+      - listitem [ref=e12] [cursor=pointer]:
+        - button " HOME" [ref=e13] [cursor=pointer]:
+          - generic [ref=e14] [cursor=pointer]: 
+          - text: HOME
+      - listitem
+      - listitem [ref=e15] [cursor=pointer]:
+        - button " ORDERS" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17] [cursor=pointer]: 
+          - text: ORDERS
+      - listitem [ref=e18] [cursor=pointer]:
+        - button " Cart 1" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20] [cursor=pointer]: 
+          - text: Cart
+          - generic [ref=e21]: "1"
+      - listitem [ref=e22] [cursor=pointer]:
+        - button "Sign Out" [ref=e23] [cursor=pointer]:
+          - generic [ref=e24] [cursor=pointer]: 
+          - text: Sign Out
+  - generic [ref=e28]:
+    - link "Continue Shopping❯" [ref=e29] [cursor=pointer]:
+      - /url: "#/dashboard"
+    - generic [ref=e30]:
+      - heading "ZARA COAT 3" [level=2] [ref=e31]
+      - heading "$ 11500" [level=3] [ref=e32]
+      - button "Add to Cart" [ref=e34] [cursor=pointer]
+      - generic [ref=e35]:
+        - heading "product details" [level=6] [ref=e36]
+        - paragraph [ref=e37]: Apple phone
+      - generic [ref=e38]:
+        - heading "Share It" [level=6] [ref=e39]
+        - list [ref=e41]:
+          - listitem [ref=e42]:
+            - generic [ref=e44]: 
+          - listitem [ref=e45]:
+            - generic [ref=e47]: 
+          - listitem [ref=e48]:
+            - generic [ref=e50]: 
+          - listitem [ref=e51]:
+            - generic [ref=e53]: 
+          - listitem [ref=e54]:
+            - generic [ref=e56]: 
+```

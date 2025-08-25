@@ -1,0 +1,120 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - navigation [ref=e5]:
+    - generic [ref=e7]:
+      - link "Automation Automation Practice":
+        - /url: ""
+        - generic [ref=e8] [cursor=pointer]:
+          - heading "Automation" [level=3] [ref=e9] [cursor=pointer]
+          - paragraph [ref=e10] [cursor=pointer]: Automation Practice
+    - text: 
+    - list [ref=e11]:
+      - listitem [ref=e12] [cursor=pointer]:
+        - button " HOME" [ref=e13] [cursor=pointer]:
+          - generic [ref=e14] [cursor=pointer]: 
+          - text: HOME
+      - listitem
+      - listitem [ref=e15] [cursor=pointer]:
+        - button " ORDERS" [ref=e16] [cursor=pointer]:
+          - generic [ref=e17] [cursor=pointer]: 
+          - text: ORDERS
+      - listitem [ref=e18] [cursor=pointer]:
+        - button " Cart" [ref=e19] [cursor=pointer]:
+          - generic [ref=e20] [cursor=pointer]: 
+          - text: Cart
+      - listitem [ref=e21] [cursor=pointer]:
+        - button "Sign Out" [ref=e22] [cursor=pointer]:
+          - generic [ref=e23] [cursor=pointer]: 
+          - text: Sign Out
+  - generic [ref=e26]:
+    - generic [ref=e30]:
+      - generic [ref=e31]: ADIDAS ORIGINAL
+      - generic [ref=e32]: $ 31500
+      - generic [ref=e33]: "Quantity: 1"
+      - list [ref=e35]:
+        - listitem [ref=e36]: Addias Originals
+    - generic [ref=e39]:
+      - generic [ref=e40]: Payment Method
+      - generic [ref=e41]:
+        - generic [ref=e42] [cursor=pointer]: Credit Card
+        - generic [ref=e43] [cursor=pointer]: Paypal
+        - generic [ref=e44] [cursor=pointer]: SEPA
+        - generic [ref=e45] [cursor=pointer]: Invoice
+      - generic [ref=e46]:
+        - generic [ref=e47]:
+          - generic [ref=e48]: Personal Information
+          - generic [ref=e50]:
+            - generic [ref=e52]:
+              - generic [ref=e53]: Credit Card Number
+              - textbox [ref=e54]: 4542 9931 9292 2293
+            - generic [ref=e55]:
+              - generic [ref=e56]:
+                - generic [ref=e57]: Expiry Date
+                - combobox [ref=e58]:
+                  - option "01" [selected]
+                  - option "02"
+                  - option "03"
+                  - option "04"
+                  - option "05"
+                  - option "06"
+                  - option "07"
+                  - option "08"
+                  - option "09"
+                  - option "10"
+                  - option "11"
+                  - option "12"
+                - combobox [ref=e59]:
+                  - option "01"
+                  - option "02"
+                  - option "03"
+                  - option "04"
+                  - option "05"
+                  - option "06"
+                  - option "07"
+                  - option "08"
+                  - option "09"
+                  - option "10"
+                  - option "11"
+                  - option "12"
+                  - option "13"
+                  - option "14"
+                  - option "15"
+                  - option "16" [selected]
+                  - option "17"
+                  - option "18"
+                  - option "19"
+                  - option "20"
+                  - option "21"
+                  - option "22"
+                  - option "23"
+                  - option "24"
+                  - option "25"
+                  - option "26"
+                  - option "27"
+                  - option "28"
+                  - option "29"
+                  - option "30"
+                  - option "31"
+              - generic [ref=e60]:
+                - generic [ref=e61]:
+                  - text: CVV Code
+                  - generic [ref=e62]: "?"
+                - textbox [ref=e63]
+            - generic [ref=e65]:
+              - generic [ref=e66]: Name on Card
+              - textbox [ref=e67]
+            - generic [ref=e68]:
+              - generic [ref=e69]:
+                - generic [ref=e70]: Apply Coupon
+                - textbox [ref=e71]
+              - button "Apply Coupon" [ref=e74] [cursor=pointer]
+        - generic [ref=e75]:
+          - generic [ref=e76]: Shipping Information
+          - generic [ref=e78]:
+            - generic [ref=e79]: yallamilli@gmail.com
+            - textbox [ref=e80]: yallamilli@gmail.com
+            - textbox "Select Country" [ref=e83]
+            - generic [ref=e85] [cursor=pointer]: Place Order
+```
