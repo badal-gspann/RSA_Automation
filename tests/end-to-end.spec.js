@@ -17,7 +17,6 @@ test.describe('Team 5 - End-to-End Integration Tests', () => {
     await cartPage.proceedToCheckout();
  
     const result = await checkoutPage.completeCheckout('test@checkout.com', 'India');
-
     await expect(authenticatedPage).toHaveURL(/.*\/dashboard\/thanks/);
   });
  
