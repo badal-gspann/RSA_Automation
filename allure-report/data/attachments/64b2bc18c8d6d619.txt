@@ -1,4 +1,0 @@
-Order confirmation not found: page.waitForSelector: Timeout 10000ms exceeded.
-Call log:
-  - waiting for locator('text=Thankyou for the order.') to be visible
-
