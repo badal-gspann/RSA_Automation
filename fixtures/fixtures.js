@@ -6,7 +6,7 @@ import { CheckoutPage } from '../pages/CheckoutPage.js';
 import { OrdersPage } from '../pages/OrdersPage.js';
 
 export const test = baseTest.extend({
-  // Logged‐in page
+
   authenticatedPage: async ({ page }, use) => {
     const loginPage = new LoginPage(page);
     await loginPage.navigate();
@@ -15,7 +15,6 @@ export const test = baseTest.extend({
     await use(page);
   },
 
-  // Page‐object instances
   productPage: async ({ page }, use) => {
     await use(new ProductPage(page));
   },
