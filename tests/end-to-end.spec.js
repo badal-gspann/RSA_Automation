@@ -17,7 +17,7 @@ test.describe('Team 5 - End-to-End Integration Tests', () => {
     await cartPage.proceedToCheckout();
  
     const result = await checkoutPage.completeCheckout('test@checkout.com', 'India');
-    expect(typeof result).toBe('boolean');
+    await expect(authenticatedPage).toHaveURL(/.*\/dashboard\/thanks/);
   });
  
   test('TC042: View order history after purchase', async ({ authenticatedPage }) => {
@@ -75,7 +75,7 @@ test.describe('Team 5 - End-to-End Integration Tests', () => {
  
     await cartPage.proceedToCheckout();
     const result = await checkoutPage.completeCheckout('test@checkout.com', 'India');
-    expect(typeof result).toBe('boolean');
+    await expect(authenticatedPage).toHaveURL(/.*\/dashboard\/thanks/);
   });
  
   test('TC046: Navigation between all main pages', async ({ authenticatedPage }) => {
@@ -105,7 +105,7 @@ test.describe('Team 5 - End-to-End Integration Tests', () => {
  
     await checkoutPage.fillShippingInformation('', '');
     const result = await checkoutPage.placeOrder();
-    expect(typeof result).toBe('boolean');
+    await expect(authenticatedPage).toHaveURL(/.*dashboard\/order.*/);
   });
  
   test('TC048: User profile data persistence', async ({ authenticatedPage }) => {

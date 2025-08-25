@@ -1,4 +1,3 @@
-
 export class CartPage {
   constructor(page) {
     this.page = page;
@@ -45,7 +44,7 @@ export class CartPage {
   }
 
   async proceedToCheckout() {
-    await this.checkOutButton.waitFor({ state: 'visible', timeout: 5000 });
+    await this.checkOutButton.waitFor({ state: 'visible', timeout: 30000 });
     await this.checkOutButton.click();
     await this.page.waitForURL(/.*\/dashboard\/order.*/, { timeout: 30000 });
   }
