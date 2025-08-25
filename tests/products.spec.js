@@ -1,6 +1,6 @@
 import { test, expect } from '../fixtures/fixtures.js';
 import { ProductPage } from '../pages/ProductPage.js';
-
+//------------------// Badal
 test.describe('Team 2 - Product Catalog Tests', () => {
   let productPage;
 
@@ -68,7 +68,9 @@ test.describe('Team 2 - Product Catalog Tests', () => {
 
   test('TC020: Verify toast message after adding product', async () => {
     await productPage.addProductToCart('ZARA COAT 3');
-    const toastMessage = await productPage.getToastMessage();
-    expect(toastMessage).toContain('Product Added To Cart');
+    const toastMessage = await productPage.page.locator("//label[text()='1']");
+    const messageText = await toastMessage.textContent();
+    expect(messageText).toBe('1');
+
   });
 });
